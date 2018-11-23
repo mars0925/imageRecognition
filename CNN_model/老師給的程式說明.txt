@@ -1,0 +1,3 @@
+1.讀取資料的檔案 data.py 透過來將圖片讀進來給程式跑
+2.Cifar_build_model_CNN_img.py 利用建立好的dataset跑模型
+3.Cifar_load_model_CNN.py 使用訓練好的modle來變數圖片
