@@ -8,8 +8,8 @@ from keras.utils import np_utils, plot_model
 
 
 
-trainPath = r"C:\Users\mars0925\Desktop\train256"
-testPath = r"C:\Users\mars0925\Desktop\train256"
+trainPath = r"D:\dataset32\testdata\abnormal\\"
+testPath = r"D:\dataset32\testdata\abnormal\\"
 
 images = []
 labels = []
