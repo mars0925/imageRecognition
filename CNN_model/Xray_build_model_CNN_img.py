@@ -75,7 +75,7 @@ model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Flatten())
 model.add(Dropout(rate=0.25))
 
-model.add(Dense(1024, activation='relu'))
+model.add(Dense(128, activation='relu'))
 model.add(Dropout(rate=0.25))
 
 model.add(Dense(num_class, activation='sigmoid'))#有幾個類別
@@ -97,7 +97,7 @@ except :
 model.compile(loss='binary_crossentropy',optimizer='adam', metrics=['accuracy'])
 train_history=model.fit(x_train_normalize, y_train_OneHot,
                         validation_split=0.1,
-                        epochs=12, batch_size=128, verbose=1)          
+                        epochs=20, batch_size=128, verbose=1)          
 
 import matplotlib.pyplot as plt
 def show_train_history(train_acc,test_acc):
@@ -116,7 +116,7 @@ show_train_history('loss','val_loss')
 #=====#
 # Step 6. 評估模型準確率
 
-scores = model.evaluate(x_test_normalize,y_test_OneHot,verbose=0)
+scores = model.evaluate(x_test_normalize,y_test_OneHot)
 print(scores[:num_class])#類別數目
 # print(model.metrics_names)#['loss', 'acc']
 
@@ -128,7 +128,7 @@ prediction[:num_class]#類別數目
     
 # 查看預測結果
 #輸入標籤代表意義
-label_dict={0:"Cardiomegaly ",1:"Emphysema ",2:"Effusion ",3:"NoFinding "}
+label_dict={0:"Normal ",1:"Abnormal"}
 			
 print(label_dict)		
 

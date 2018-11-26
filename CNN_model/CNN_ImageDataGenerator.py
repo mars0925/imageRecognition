@@ -60,6 +60,7 @@ classifier.add(MaxPooling2D(pool_size = (2, 2)))
 # Step 3 - Flattening
 #扁平化
 classifier.add(Flatten())
+classifier.add(Dropout(rate=0.25))
 
 # Step 4 - Full connection
 #連結到神經網路
