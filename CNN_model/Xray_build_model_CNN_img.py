@@ -5,7 +5,7 @@ import numpy as np
 import random
 
 np.random.seed(10)
-num_class = 4
+num_class = 2
 
 # Step 1. 資料準備
 
@@ -78,7 +78,7 @@ model.add(Dropout(rate=0.25))
 model.add(Dense(1024, activation='relu'))
 model.add(Dropout(rate=0.25))
 
-model.add(Dense(num_class, activation='softmax'))#有幾個類別
+model.add(Dense(num_class, activation='sigmoid'))#有幾個類別
 
 print(model.summary())
 
@@ -94,7 +94,7 @@ except :
 
 # Step 4. 訓練模型
 
-model.compile(loss='categorical_crossentropy',optimizer='adam', metrics=['accuracy'])
+model.compile(loss='binary_crossentropy',optimizer='adam', metrics=['accuracy'])
 train_history=model.fit(x_train_normalize, y_train_OneHot,
                         validation_split=0.1,
                         epochs=12, batch_size=128, verbose=1)          
