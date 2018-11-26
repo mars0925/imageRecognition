@@ -25,9 +25,9 @@ from keras.layers import Flatten ##扁平化
 from keras.layers import Dense #神經網路層
 from keras.layers import Dropout
 
-trainPath = r"D:\AI\秀傳提供的bonescan檔案\已處理\dataset64\train"#訓練集路徑
-testPath = r"D:\AI\秀傳提供的bonescan檔案\已處理\dataset64\test"#訓練集路徑
-img_size = 64
+trainPath = r"D:\AI\秀傳提供的bonescan檔案\已處理\2_dataset128\train"#訓練集路徑
+testPath = r"D:\AI\秀傳提供的bonescan檔案\已處理\2_dataset128\test"#訓練集路徑
+img_size = 128
 batch_size = 32
 trainSample = 800
 testSample = 190
@@ -44,7 +44,7 @@ classifier = Sequential()
 #activation= "relu" 激活函數
 #input_shape = (64, 64, 3) 輸入的圖片大小,第一層需要設定
 classifier.add(Convolution2D(filters= 32, kernel_size=(3,3), activation= "relu", input_shape = (img_size, img_size, 1),padding='same'))
-classifier.add(Dropout(rate=0.25))
+classifier.add(Dropout(rate=0.3))
 
 # Step 2 - Pooling
 #添加池化層
@@ -53,7 +53,7 @@ classifier.add(MaxPooling2D(pool_size = (2, 2)))
 # Adding a second convolutional layer
 #第二層
 classifier.add(Convolution2D(filters= 32, kernel_size=(3,3), activation = 'relu',padding='same'))
-classifier.add(Dropout(rate=0.25))
+classifier.add(Dropout(rate=0.3))
 classifier.add(MaxPooling2D(pool_size = (2, 2)))
 
 # Step 3 - Flattening

@@ -8,8 +8,8 @@ from keras.utils import np_utils, plot_model
 
 
 
-trainPath = r"D:\dataset32\testdata\abnormal\\"
-testPath = r"D:\dataset32\testdata\abnormal\\"
+trainPath = r"D:\AI\秀傳提供的bonescan檔案\已處理\1_dataset128\train\\"
+testPath = r"D:\AI\秀傳提供的bonescan檔案\已處理\1_dataset128\test\\"
 
 images = []
 labels = []
@@ -28,7 +28,13 @@ def load_data():
         img_array = image.img_to_array(img)#將圖片轉成陣列
         images.append(img_array)#放入list
 
-        label = int(fileName.split('.')[0])#從檔名切出標籤
+        #label = int(fileName.split('.')[0])#從檔名切出標籤
+        label = fileName.split('.')[0]
+        if label == "N":
+            label = 0
+        else:
+            label = 1
+            
         labels.append(label)#放到list
 
     traindata = np.array(images)#將整個list變成陣列
@@ -47,7 +53,13 @@ def load_data():
         img_array = image.img_to_array(img)#將圖片轉成陣列
         images.append(img_array)#放入list
 
-        label = int(fileName.split('.')[0])#從檔名切出標籤
+        #label = int(fileName.split('.')[0])#從檔名切出標籤
+        label = fileName.split('.')[0]
+        if label == "N":
+            label = 0
+        else:
+            label = 1
+        
         labels.append(label)#放到list
 
     testndata = np.array(images)#將整個list變成陣列
@@ -57,3 +69,4 @@ def load_data():
     print("測試資料集label:",testlabels.shape) 
 
     return (traindata,trainlabels), (testndata,testlabels)
+
