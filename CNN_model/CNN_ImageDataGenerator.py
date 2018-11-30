@@ -25,9 +25,9 @@ from keras.layers import Flatten ##扁平化
 from keras.layers import Dense #神經網路層
 from keras.layers import Dropout
 
-trainPath = r"D:\AI\秀傳提供的bonescan檔案\已處理\2_dataset128_ImageDataGenerator\train"#訓練集路徑
-testPath = r"D:\AI\秀傳提供的bonescan檔案\已處理\2_dataset128_ImageDataGenerator\test"#訓練集路徑
-img_size = 128#照片大小
+trainPath = r"D:\AI\train512"#訓練集路徑
+testPath = r"D:\AI\test512"#訓練集路徑
+img_size = 512#照片大小
 batch_size = 32#一次要學習幾張
 trainSample = 800#訓練習樣本數
 testSample = 190#測試集樣本數

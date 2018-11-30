@@ -8,8 +8,8 @@ from keras.utils import np_utils, plot_model
 
 
 
-trainPath = r"E:\MarsDemo\20181203\train\\"
-testPath = r"E:\MarsDemo\20181203\test\\"
+trainPath = r"D:\AI\秀傳提供的bonescan檔案\已處理\1_dataset128\train\\"
+testPath = r"D:\AI\秀傳提供的bonescan檔案\已處理\1_dataset128\test\\"
 
 images = []
 labels = []

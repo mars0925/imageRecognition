@@ -2,8 +2,8 @@ from PIL import Image
 
 import os
 
-srcpath = r"D:\AI\秀傳提供的bonescan檔案\已處理\彰濱Y(異常)" #目標資料夾
-targetpath = r"D:\AI\秀傳提供的bonescan檔案\已處理\彰濱Y(異常)128"#成功資料夾
+srcpath = r"D:\AI\AIimage\train" #目標資料夾
+targetpath = r"D:\AI\AIimage\train1028"#成功資料夾
 size = 128#要轉的大小
 
 filelist = os.listdir(srcpath)

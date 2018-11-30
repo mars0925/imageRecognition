@@ -170,6 +170,18 @@ def show_Predicted_Probability(y,prediction,x_img,Predicted_Probability,i,pixel,
 show_Predicted_Probability(y_test_OneHot,prediction,x_test_normalize,Predicted_Probability,0,pixel,RGB)
 show_Predicted_Probability(y_test_OneHot,prediction,x_test_normalize,Predicted_Probability,3,pixel,RGB)
 
+print("＝＝＝＝＝＝＝列出測試集預測結果＝＝＝＝")
+
+correct = 0
+
+for i  in range(y_test.shape[0]):
+    
+    if prediction[i] == y_test[i]:
+        correct +=1
+
+print("Correct:", correct, " Total: ", len(y_test))
+
+
 # Step 8. Save Weight to h5 
 
 model.save_weights("./cifarCnnModel.h5")
