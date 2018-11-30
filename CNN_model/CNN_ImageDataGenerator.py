@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Nov 22 10:58:51 2018
-使用 ImageDataGenerator
+使用 ImageDataGenerator 增加圖像
 @author: mars0925
 """
 
@@ -120,3 +120,20 @@ from tool import show_train_history
 show_train_history(train_history,'acc','val_acc')
 show_train_history(train_history,'loss','val_loss')
 
+#評估模型準確率
+score = classifier.evaluate_generator(test_set, testSample/batch_size, workers=12)
+
+## 進行預測
+scores = classifier.predict_generator(test_set, testSample/batch_size, workers=12)
+
+print("＝＝＝＝＝＝＝列出預測機率＝＝＝＝")
+
+correct = 0
+for i, n in enumerate(test_set.filenames):
+    if n.startswith("normal") and scores[i][0] <= 0.5:
+        correct += 1
+    if n.startswith("abnormal") and scores[i][0] > 0.5:
+        correct += 1
+
+print("Correct:", correct, " Total: ", len(test_set.filenames))
+print("Loss: ", score[0], "Accuracy: ", score[1])
