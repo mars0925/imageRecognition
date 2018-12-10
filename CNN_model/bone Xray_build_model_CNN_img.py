@@ -74,10 +74,12 @@ model.add(MaxPooling2D(pool_size=(2, 2)))
 # Step 3. 建立神經網路(平坦層、隱藏層、輸出層)
 
 model.add(Flatten())
-model.add(Dropout(rate=0.25))
+model.add(Dropout(rate=0.3))
 
 model.add(Dense(128, activation='relu'))
-model.add(Dropout(rate=0.25))
+model.add(Dropout(rate=0.4))
+model.add(Dense(256, activation='relu'))
+model.add(Dropout(0.5))
 
 model.add(Dense(num_class, activation='sigmoid'))#有幾個類別
 
@@ -98,7 +100,7 @@ except :
 model.compile(loss='binary_crossentropy',optimizer='adam', metrics=['accuracy'])
 train_history=model.fit(x_train_normalize, y_train_OneHot,
                         validation_split=0.1,
-                        epochs=20, batch_size=128, verbose=1)          
+                        epochs=12, batch_size=32, verbose=1)          
 
 import matplotlib.pyplot as plt
 def show_train_history(train_acc,test_acc):
@@ -158,7 +160,7 @@ plot_images_labels_prediction(x_test_normalize,y_test,prediction,0,pixel, num_cl
 Predicted_Probability=model.predict(x_test_normalize)
 
 def show_Predicted_Probability(y,prediction,x_img,Predicted_Probability,i,pixel,RGB):
-    print('原來label:',label_dict[y[i][0]],
+    print('原來label:',label_dict[y[i]],
           ' 預測predict:',label_dict[prediction[i]])
     plt.figure(figsize=(2,2))
     plt.imshow(np.reshape(x_test_normalize[i],(pixel,pixel,RGB)),cmap='binary')
@@ -167,8 +169,8 @@ def show_Predicted_Probability(y,prediction,x_img,Predicted_Probability,i,pixel,
         print(label_dict[j]+ ' Probability:%1.9f'%(Predicted_Probability[i][j]))
     print("===============finished===========")
 
-show_Predicted_Probability(y_test_OneHot,prediction,x_test_normalize,Predicted_Probability,0,pixel,RGB)
-show_Predicted_Probability(y_test_OneHot,prediction,x_test_normalize,Predicted_Probability,3,pixel,RGB)
+show_Predicted_Probability(y_test,prediction,x_test_normalize,Predicted_Probability,0,pixel,RGB)
+show_Predicted_Probability(y_test,prediction,x_test_normalize,Predicted_Probability,3,pixel,RGB)
 
 print("＝＝＝＝＝＝＝列出測試集預測結果＝＝＝＝")
 
