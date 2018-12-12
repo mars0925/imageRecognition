@@ -8,8 +8,13 @@ from keras.utils import np_utils, plot_model
 
 
 
+<<<<<<< HEAD
 trainPath = r"D:\AI\20181203\train256\\"
 testPath = r"D:\AI\20181203\test256\\"
+=======
+trainPath = r"E:\MarsDemo\20181203\train256\\"
+testPath = r"E:\MarsDemo\20181203\test256\\"
+>>>>>>> 6541488b9499389db424fba5c4b7e91ad186882d
 
 images = []
 labels = []
